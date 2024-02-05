@@ -1,11 +1,8 @@
 const mongoose = require("mongoose");
-const User = require("../../models/users");
+const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 const { CreateToken } = require("../../utils/utils");
-
-
-
 
 const signUpUser = async (req, res) => {
   const { email, password, name } = req.body;

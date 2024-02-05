@@ -1,42 +1,61 @@
 require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
+const usersRoutes = require("./src/routes/users");
+const productsRoutes = require("./src/routes/products");
+const accountsRoutes = require("./src/routes/accounts");
 const cors = require("cors");
 
-const PORT = process.env.PORT || 3000;
-
+//Express app
 const app = express();
+app.use(express.json());
+const port = process.env.PORT || 3000;
 
-// Enable CORS
+app.use(express.json());
 app.use(
   cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: [
+      "https://fullstack-frontend-eight.vercel.app",
+      "http://localhost:3000",
+    ],
+    credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    optionsSuccessStatus: 204,
   })
 );
+// middleware --> logging --> saving user activity
 
-// Parse JSON bodies
-app.use(express.json());
-
-// Logging middleware
 app.use((req, res, next) => {
   console.log(
-    `Client has requested ${req.method} method in "${
+    `This user has requested ${req.method} method from this ${
       req.path
-    }" path on ${new Date().toLocaleString()}`
+    } path: ${new Date().toLocaleString()}`
   );
   next();
 });
 
-// Default route
 app.get("/", (req, res) => {
-  res.send("hello world!");
+  res.status(200).json("You are requesting from the Root path");
 });
 
-// 404 middleware
-app.use((req, res) => {
-  res.status(404).send("Page not found");
+app.use("/users", usersRoutes);
+app.use("/products", productsRoutes);
+app.use("/account", accountsRoutes);
+
+//middleware --> error handling
+app.use((req, res, next) => {
+  res.status(404).json({
+    message: "Page not found",
+  });
+  next();
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port http://localhost:${PORT}`);
-});
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(
+    console.log("connected to MongoBD successfully"),
+    app.listen(port, () => {
+      console.log(`server is running at http://localhost:${port}`);
+    })
+  )
+  .catch((err) => console.log(err));

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("../../models/users");
+const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const { CreateToken } = require("../../utils/utils");
 
