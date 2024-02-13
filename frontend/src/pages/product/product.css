@@ -17,7 +17,7 @@ body {
 }
 
 .single-product-content {
-  background-color: #555;
+  backdrop-filter: blur(50px);
   color: white;
   height: 50%;
   width: 60%;

@@ -1,8 +1,7 @@
 .products-container {
   display: flex;
   flex-direction: column;
-  background-color: #333;
-  color: white;
+  background-color: transparent;
 }
 
 .create-product-button {
@@ -22,8 +21,7 @@
 
 .product-card {
   display: inline-table;
-
-  background-color: #555;
+  backdrop-filter: blur(50px);
   width: 300px;
   border-radius: 50px;
   padding: 30px;
@@ -46,6 +44,6 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #333;
+  background-color: transparent;
   color: white;
 }

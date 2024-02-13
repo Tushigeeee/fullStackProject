@@ -5,7 +5,7 @@ import { useUserContext } from "../../context/UserContext";
 import { useNotificationContext } from "../../context/NotificationContext";
 import { Modal } from "../../components/Modal/Modal";
 import { Button, Form, Input, InputNumber, Image, Radio } from "antd";
-import { uploadImage } from "../utils/utils";
+import { uploadImage } from "../../utils";
 
 export const EditProductModal = (props) => {
   const {

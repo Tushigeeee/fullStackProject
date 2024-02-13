@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { isTokenExpired } from "../pages/utils/utils";
+
 import { useNotificationContext } from "./NotificationContext";
+import { isTokenExpired } from "../utils";
 const userContext = createContext();
 
 export const UserProvider = (props) => {
@@ -50,7 +51,7 @@ export const UserProvider = (props) => {
 
   const UPDATE_USER = async (updatedUser) => {
     localStorage.setItem("user", JSON.stringify(updatedUser));
-    setCurrentUser(JSON.parse(updatedUser));
+    setCurrentUser(updatedUser);
   };
 
   return (

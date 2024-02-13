@@ -43,9 +43,17 @@ export const Accounts = () => {
       </div>
       {currentUser && (
         <div>
+          <img
+            style={{
+              width: "100px",
+              height: "100px",
+              borderRadius: "10px",
+            }}
+            src={currentUser.user.userImage}
+            alt={currentUser.user.name}
+          />
           <p>Name : {currentUser.user.name}</p>
           <p>Email: {currentUser.user.email}</p>
-          <p>Image: {currentUser.user.Image}</p>
         </div>
       )}
 

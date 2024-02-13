@@ -5,7 +5,7 @@ const validator = require("validator");
 const { CreateToken } = require("../../utils/utils");
 
 const signUpUser = async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, userImage } = req.body;
 
   if (!email || !password || !name) {
     res.status(400).send("Please enter your email and password.");

@@ -5,7 +5,7 @@ import { useNotificationContext } from "../../context/NotificationContext";
 import { Button, Form, Input, InputNumber, Radio } from "antd";
 import { useUserContext } from "../../context/UserContext";
 import { useProductContext } from "../../context/ProductsContext";
-import { uploadImage } from "../utils/utils";
+import { uploadImage } from "../../utils";
 
 const plainOptions = ["public", "private"];
 
@@ -71,7 +71,7 @@ export const CreateProductModal = (props) => {
             autoComplete="off"
           >
             <Form.Item
-              label="Name"
+              label="Hike name"
               name="name"
               rules={[
                 { required: true, message: "Required" },
@@ -81,7 +81,7 @@ export const CreateProductModal = (props) => {
               <Input />
             </Form.Item>
             <Form.Item
-              label="Price"
+              label="Length"
               name="price"
               rules={[{ min: 1, required: true, type: "number" }]}
             >
@@ -92,7 +92,7 @@ export const CreateProductModal = (props) => {
               />
             </Form.Item>
             <Form.Item
-              label="Description"
+              label="Tell us your experience"
               name="description"
               rules={[{ required: true, message: "Required" }]}
             >

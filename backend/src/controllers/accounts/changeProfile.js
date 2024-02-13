@@ -76,7 +76,7 @@ const changeProfile = async (req, res) => {
         id: updateUser._id,
         email: updateUser.email,
         name: updateUser.name,
-        userImage: userImage.newUserImage,
+        userImage: updateUser.userImage,
       },
       token,
     });

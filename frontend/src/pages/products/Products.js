@@ -15,6 +15,7 @@ export const Products = () => {
 
   const { products, productContextLoading } = useProductContext();
   console.log(products);
+
   if (productContextLoading) {
     return <div className="loading">...Loading Products</div>;
   }

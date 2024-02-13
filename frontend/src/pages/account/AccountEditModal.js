@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { Modal, Button, Input } from "antd";
+import { Modal, Button, Input, Image } from "antd";
 import { useUserContext } from "../../context/UserContext";
 import axios from "axios";
+import { uploadImage } from "../../utils";
 
 export const AccountEditModel = ({ handleClose, open }) => {
   const { currentUser } = useUserContext();
   const [inputValue, setInputValue] = useState({
     name: currentUser.user.name,
     email: currentUser.user.email,
-    currentPassword: currentUser.user.password,
+    password: currentUser.user.password,
+    userImage: currentUser.user.userImage,
+    newName: "",
     newEmail: "",
     newPassword: "",
+    newUserImage: "",
   });
   const { UPDATE_USER } = useUserContext();
 
@@ -18,23 +22,39 @@ export const AccountEditModel = ({ handleClose, open }) => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   };
+  console.log(currentUser);
 
   const handleCancelButton = () => {
     setInputValue({
       name: currentUser.user.name,
       email: currentUser.user.email,
-      currentPassword: currentUser.user.password,
+      password: currentUser.user.password,
+      userImage: currentUser.user.userImage,
     });
     handleClose();
   };
+  const [newUserImage, setNewUserImage] = useState();
+
+  const handleFileChange = async (e) => {
+    const userImage = await uploadImage(e.target.files[0]);
+    setNewUserImage(userImage);
+  };
+  console.log(newUserImage);
+  console.log(currentUser);
 
   const handleSaveButton = async () => {
     const updatedAccount = {
       name: inputValue.name,
       email: inputValue.email,
-      currentPassword: inputValue.currentPassword,
+
+      password: inputValue.currentPassword,
       newPassword: inputValue.newPassword,
+      newName: inputValue.name,
+      newEmail: inputValue.email,
+      userImage: currentUser.user.userImage,
+      newUserImage: newUserImage,
     };
+    console.log(updatedAccount);
     try {
       const response = await axios.put(
         `http://localhost:8080/account/changeProfile`,
@@ -48,6 +68,7 @@ export const AccountEditModel = ({ handleClose, open }) => {
       const data = await response.data;
       UPDATE_USER(data);
       handleClose();
+      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -56,7 +77,7 @@ export const AccountEditModel = ({ handleClose, open }) => {
   return (
     <Modal
       title="Edit Account"
-      visible={open}
+      open={open}
       onCancel={handleCancelButton}
       footer={[
         <Button key="cancel" onClick={handleCancelButton}>
@@ -103,6 +124,19 @@ export const AccountEditModel = ({ handleClose, open }) => {
           name="newPassword"
           value={inputValue.newPassword}
           onChange={handleInput}
+        />
+      </div>
+      <div>
+        <label>Image</label>
+        <input
+          name="image"
+          onChange={handleFileChange}
+          placeholder="choose file"
+          type="file"
+        />
+        <Image
+          height={"60px"}
+          src={newUserImage ? newUserImage : currentUser.user.userImage}
         />
       </div>
     </Modal>
