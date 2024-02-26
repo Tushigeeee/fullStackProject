@@ -30,9 +30,7 @@ body {
   border-radius: 12px;
   padding: 30px;
   margin: 20px;
-  display: flex;
 
-  flex-direction: column;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -54,4 +52,25 @@ body {
 
 .single-product-button:hover {
   background-color: #2980b9;
+}
+.imgDescription {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  color: black;
+}
+.cardBottom {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 450px;
+  color: black;
+}
+.name {
+  display: flex;
+  padding-left: 250px;
+  padding-bottom: 20px;
+}
+.priceCategory {
+  padding-left: 30px;
 }

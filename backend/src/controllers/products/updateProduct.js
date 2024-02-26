@@ -10,7 +10,16 @@ const updateProduct = async (req, res) => {
   const updatedProduct = await Product.findOneAndUpdate(
     { _id: id },
     { ...req.body }
-  );
+  )
+    .populate({
+      path: "comments",
+      options: { sort: { createdAt: "desc" } },
+      populate: { path: "user", select: ["email", "profilePicUrl", "name"] },
+    })
+    .populate({
+      path: "user",
+      select: ["email", "profilePicUrl", "name"],
+    });
   if (!updatedProduct) {
     res.status(404).json({ message: "Product not found" });
     return;

@@ -71,7 +71,7 @@ export const Products = () => {
                 <p style={{ color: "White" }}> {product.description}</p>
               </div>
               <div>
-                <p style={{ color: "black" }}>Length (mile):</p>
+                <p style={{ color: "black" }}>Length (miles):</p>
                 <p style={{ color: "white" }}> {product.price}</p>
               </div>
               <div>
@@ -80,7 +80,7 @@ export const Products = () => {
               </div>
 
               <p style={{ color: "lightyellow" }}>
-                Added by {product.userEmail}
+                Added by: {product.userEmail}
               </p>
             </div>
           ))}

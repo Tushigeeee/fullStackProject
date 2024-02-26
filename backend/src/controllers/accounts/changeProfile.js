@@ -20,14 +20,14 @@ const changeProfile = async (req, res) => {
   } = req.body;
 
   if (
-    !email ||
-    !password ||
+    // !email ||
+    // !password ||
     !name ||
-    !userImage ||
-    !newEmail ||
-    !newPassword ||
-    !newName ||
-    !newUserImage
+    !userImage
+    // !newEmail ||
+    // !newPassword ||
+    // !newName ||
+    // !newUserImage
   ) {
     res.status(400).send("Please enter your email, password, and name.");
     return;

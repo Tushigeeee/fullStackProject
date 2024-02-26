@@ -44,6 +44,20 @@ export const EditProductModal = (props) => {
       value: "private",
     },
   ];
+  const option = [
+    {
+      label: "Easy",
+      value: "Easy",
+    },
+    {
+      label: "Moderate",
+      value: "Moderate",
+    },
+    {
+      label: "Challenging",
+      value: "Challenging",
+    },
+  ];
   const inputPress = (e) => {
     const { value, name } = e.target;
     setDisabledSubmitButton(value === selectedProduct[name]);
@@ -106,7 +120,7 @@ export const EditProductModal = (props) => {
             autoComplete="off"
           >
             <Form.Item
-              label="Name"
+              label="Trail Name"
               name="name"
               rules={[
                 { required: true, message: "Required" },
@@ -116,7 +130,7 @@ export const EditProductModal = (props) => {
               <Input />
             </Form.Item>
             <Form.Item
-              label="Price"
+              label="Length (miles)"
               name="price"
               rules={[{ min: 1, required: true, type: "number" }]}
             >
@@ -127,34 +141,14 @@ export const EditProductModal = (props) => {
               />
             </Form.Item>
             <Form.Item
-              label="Description"
+              label="Review"
               name="description"
               rules={[{ required: true, message: "Required" }]}
             >
               <Input />
             </Form.Item>
-            <Form.Item
-              label="Category"
-              name="category"
-              rules={[{ required: true, message: "Required" }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Type"
-              name="type"
-              rules={[{ required: true, message: "Required" }]}
-            >
-              <Radio.Group
-                options={options}
-                onChange={(onChangeType, inputPress)}
-                value={selectedType}
-                optionType="button"
-                buttonStyle="solid"
-              />
-            </Form.Item>
+
             <Form.Item label="image" name="image">
-              <label>File</label>
               <input
                 name="image"
                 onChange={handleFileChange}

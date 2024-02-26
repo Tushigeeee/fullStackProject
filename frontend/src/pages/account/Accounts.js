@@ -3,59 +3,77 @@ import { Header } from "../../components/header/Header";
 import { useUserContext } from "../../context/UserContext";
 import { Button } from "antd";
 import { AccountEditModel } from "./AccountEditModal";
+import { useProductContext } from "../../context/ProductsContext";
+import "./Account.css";
+import { Footer } from "../../components/footer";
+
 export const Accounts = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const { currentUser, userContextLoading } = useUserContext();
+  const { products, productContextLoading } = useProductContext();
 
-  if (userContextLoading) {
+  if (userContextLoading || productContextLoading) {
     return <div>Loading...</div>;
   }
 
+  const userProducts = products.filter(
+    (product) => product.userEmail === currentUser.user.email
+  );
+
   return (
-    <div
-      style={{
-        height: "95vh",
-        width: "100vw",
-        margin: 0,
-        padding: 0,
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
+    <div className="accounts-container">
       <Header />
 
-      <h1
-        style={{
-          paddingTop: "20px",
-          color: "#81B2D9",
-        }}
-      >
-        Account Information
-      </h1>
-      <div className="button-container">
-        <Button variant="outlined" onClick={handleOpen}>
-          Edit Account
-        </Button>
-      </div>
+      <h1 className="account-info-title">Account Information</h1>
+
       {currentUser && (
-        <div>
+        <div className="user-info-container">
           <img
-            style={{
-              width: "100px",
-              height: "100px",
-              borderRadius: "10px",
-            }}
+            className="user-avatar"
             src={currentUser.user.userImage}
             alt={currentUser.user.name}
           />
-          <p>Name : {currentUser.user.name}</p>
-          <p>Email: {currentUser.user.email}</p>
+          <div className="userInfo">
+            {" "}
+            <p className="user-name">Name : {currentUser.user.name}</p>
+            <p className="user-email">Email: {currentUser.user.email}</p>
+            <div className="button-container">
+              <Button variant="outlined" onClick={handleOpen}>
+                Edit Account
+              </Button>
+            </div>
+          </div>
         </div>
       )}
+
+      <div className="productCardContainer">
+        {userProducts.map((product) => (
+          <div key={product._id} className="productCard">
+            <h3 className="product-name">{product.name}</h3>
+            <img
+              className="product-image"
+              src={product.image}
+              alt={product.name}
+            />
+
+            <p className="product-details">
+              Review: <span>{product.description}</span>
+            </p>
+            <p className="product-details">
+              Length (miles): <span>{product.price}</span>
+            </p>
+            <p className="product-details">
+              Difficulty: <span>{product.category}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
 
       <AccountEditModel handleClose={handleClose} open={open} />
     </div>

@@ -1,0 +1,84 @@
+.accounts-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url("../Assets/account.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.account-info-title {
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 200px;
+}
+.button-container {
+  margin-bottom: 5px;
+  margin-top: 30px;
+  margin-left: 40px;
+
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-info-container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 30px;
+  gap: 20px;
+}
+.user-avatar {
+  width: 250px;
+  height: 200px;
+  border-radius: 60px;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+.productCard {
+  display: inline-table;
+  backdrop-filter: blur(50px);
+  width: 300px;
+  border-radius: 50px;
+  padding: 30px;
+  margin: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.productCard:hover {
+  background-color: rgb(29, 39, 81);
+}
+.product-details {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: white;
+}
+.product-image {
+  width: 300px;
+  height: 250px;
+  border-radius: 10px;
+}
+.product-name {
+  color: white;
+  padding-left: 80px;
+  padding-bottom: 10px;
+}
+.button-container {
+  padding-right: 200px;
+}
+.footer {
+  padding-top: 180px;
+}
