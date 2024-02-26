@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import { useUserContext } from "../../context/UserContext";
 import { useNotificationContext } from "../../context/NotificationContext";
-
+import footer_logo from "../../pages/Assets/new.png";
 export const Header = () => {
   const { currentUser, signOut, userContextLoading, setProducts } =
     useUserContext();
@@ -22,8 +22,9 @@ export const Header = () => {
   return (
     <div className="Header">
       <div className="Header-Left">
-        <Link style={{ color: "white" }} to="/">
-          Home
+        <Link to="/">
+          {" "}
+          <img src={footer_logo} alt="" />
         </Link>
       </div>
 

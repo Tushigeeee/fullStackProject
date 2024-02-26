@@ -18,23 +18,31 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, "Product category is required"],
     },
-    userId: {
-      type: String,
-      required: [true, "Product userId is required"],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: [true, "UserId is required"],
     },
     type: {
       type: String,
       enum: ["public", "private"],
       required: [true, "Product type is required"],
     },
-    userEmail: {
-      type: String,
-      required: [true, "Product email is required"],
-    },
+
     image: {
       type: String,
       required: [true, "image is required"],
     },
+    userEmail: {
+      type: String,
+      required: [false, "image is required"],
+    },
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
   },
   { timestamps: true }
 );

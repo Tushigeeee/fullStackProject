@@ -36,7 +36,10 @@ export const CreateProductModal = (props) => {
 
       const data = await response.data;
 
-      Create_Product(data);
+      Create_Product({
+        ...data,
+      });
+
       handleClose();
       successNotification("Create Product successfully");
     } catch (error) {
@@ -71,7 +74,7 @@ export const CreateProductModal = (props) => {
             autoComplete="off"
           >
             <Form.Item
-              label="Hike name"
+              label="name"
               name="name"
               rules={[
                 { required: true, message: "Required" },
@@ -81,7 +84,7 @@ export const CreateProductModal = (props) => {
               <Input />
             </Form.Item>
             <Form.Item
-              label="Length"
+              label="price"
               name="price"
               rules={[{ min: 1, required: true, type: "number" }]}
             >
@@ -92,7 +95,7 @@ export const CreateProductModal = (props) => {
               />
             </Form.Item>
             <Form.Item
-              label="Tell us your experience"
+              label="description"
               name="description"
               rules={[{ required: true, message: "Required" }]}
             >

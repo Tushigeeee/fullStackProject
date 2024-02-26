@@ -4,15 +4,7 @@ const createProduct = async (req, res) => {
   const { name, price, description, category, type, image } = req.body;
   const userId = req.user._id;
   const userEmail = req.user.email;
-  if (
-    !name ||
-    !price ||
-    !description ||
-    !category ||
-    !userId ||
-    !type ||
-    !image
-  ) {
+  if (!name || !price || !description || !category || !type || !image) {
     return res.status(400).json({
       message: "All fields are required",
     });
@@ -24,7 +16,7 @@ const createProduct = async (req, res) => {
       price,
       description,
       category,
-      userId,
+      user: userId,
       type,
       userEmail,
       image,

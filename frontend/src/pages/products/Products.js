@@ -5,6 +5,7 @@ import "./Products.css";
 import { Header } from "../../components/header/Header";
 import { CreateProductModal } from "./CreateProductModal";
 import { useProductContext } from "../../context/ProductsContext";
+import { Footer } from "../../components/footer";
 
 export const Products = () => {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ export const Products = () => {
               </p>
             </div>
           ))}
+        <Footer />
       </div>
 
       <CreateProductModal open={open} handleClose={handleClose} />

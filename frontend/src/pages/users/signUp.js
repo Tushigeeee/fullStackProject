@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useNotificationContext } from "../../context/NotificationContext";
 import { uploadImage } from "../../utils";
+import { Footer } from "../../components/footer";
 
 export const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -51,7 +52,7 @@ export const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="body">
       <Header />
       <div
         style={{
@@ -137,6 +138,7 @@ export const SignUp = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

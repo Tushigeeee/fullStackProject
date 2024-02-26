@@ -5,6 +5,7 @@ import { useUserContext } from "../../context/UserContext";
 import { useNotificationContext } from "../../context/NotificationContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Footer } from "../../components/footer";
 
 export const SignIn = () => {
   const { signIn } = useUserContext();
@@ -38,7 +39,7 @@ export const SignIn = () => {
   };
 
   return (
-    <div>
+    <div className="body">
       <Header />
       <div
         style={{
@@ -102,12 +103,13 @@ export const SignIn = () => {
 
             <div className="register-link">
               <p>
-                Don't have an account? <Link to="./signUp">Register</Link>
+                Don't have an account? <a href="./signUp">Register</a>
               </p>
             </div>
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

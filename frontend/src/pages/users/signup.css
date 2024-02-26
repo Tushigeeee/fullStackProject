@@ -1,3 +1,13 @@
+.body {
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  min-height: 100vh;
+  background: url("../Assets/background.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 .wrapper {
   width: 420px;
   height: 630px;
@@ -8,7 +18,7 @@
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 
 .wrapper h1 {
