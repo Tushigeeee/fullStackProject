@@ -4,7 +4,8 @@ import footer_logo from "../pages/Assets/new.png";
 import instagram_icon from "../pages/Assets/instagram_icon.png";
 import pintrest_icon from "../pages/Assets/facebook.png";
 import whatsapp_icon from "../pages/Assets/whatsapp_icon.png";
-
+import twitter_icon from "../pages/Assets/twitter.png";
+import tiktok_icon from "../pages/Assets/tiktok.png";
 export const Footer = () => {
   return (
     <div className="footer">
@@ -15,6 +16,9 @@ export const Footer = () => {
 
       <div className="footer-social-icons">
         <div className="footer-icons-container">
+          <img src={tiktok_icon} alt="" />
+        </div>
+        <div className="footer-icons-container">
           <img src={instagram_icon} alt="" />
         </div>
         <div className="footer-icons-container">
@@ -22,6 +26,9 @@ export const Footer = () => {
         </div>
         <div className="footer-icons-container">
           <img src={whatsapp_icon} alt="" />
+        </div>
+        <div className="footer-icons-container">
+          <img src={twitter_icon} alt="" />
         </div>
       </div>
       <div className="footer-copyright">

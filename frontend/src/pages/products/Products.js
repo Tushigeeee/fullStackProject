@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
+import { Button, Image } from "antd";
 import "./Products.css";
 import { Header } from "../../components/header/Header";
 import { CreateProductModal } from "./CreateProductModal";
@@ -31,7 +31,7 @@ export const Products = () => {
           onClick={handleOpen}
           className="create-product-button"
         >
-          Create Product
+          Share your Experience
         </Button>
       </div>
 
@@ -43,10 +43,12 @@ export const Products = () => {
               className="product-card"
               onClick={() => navigate(`/products/${product._id}`)}
             >
-              <h3 style={{ marginLeft: "80px" }}>Name: {product.name}</h3>
+              <h3 style={{ marginLeft: "60px", paddingBottom: "30px" }}>
+                Trail Name: {product.name}
+              </h3>
               {}
 
-              <img
+              <Image
                 style={{
                   width: "300px",
                   height: "250px",
@@ -64,9 +66,19 @@ export const Products = () => {
                 Type: {product.type}
               </p>
 
-              <p>Description: {product.description}</p>
-              <p>Price: {product.price}</p>
-              <p>Category: {product.category}</p>
+              <div className="preview">
+                <p style={{ color: "black" }}>Review:</p>
+                <p style={{ color: "White" }}> {product.description}</p>
+              </div>
+              <div>
+                <p style={{ color: "black" }}>Length (mile):</p>
+                <p style={{ color: "white" }}> {product.price}</p>
+              </div>
+              <div>
+                <p style={{ color: "black" }}>Difficulty:</p>
+                <p style={{ color: "white" }}> {product.category}</p>
+              </div>
+
               <p style={{ color: "lightyellow" }}>
                 Added by {product.userEmail}
               </p>

@@ -1,7 +1,12 @@
 .products-container {
   display: flex;
   flex-direction: column;
-  background-color: transparent;
+  min-height: 100vh;
+  background: url("../Assets/proBackground.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .create-product-button {
@@ -35,9 +40,14 @@
 }
 
 .product-card:hover {
-  background-color: #666;
+  background-color: rgb(97, 58, 4);
 }
-
+.preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .loading {
   display: flex;
 

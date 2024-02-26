@@ -32,9 +32,9 @@ export const Header = () => {
         <div className="Header-Right-Item">
           {currentUser && (
             <>
-              <Link to="/products">Products</Link>
+              <Link to="/products">Discover</Link>
               <Link to="/account">
-                Welcome .
+                Welcome:
                 {currentUser.user
                   ? currentUser.user.email
                   : currentUser.newUser.email}

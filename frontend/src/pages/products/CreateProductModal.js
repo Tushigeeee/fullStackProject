@@ -6,8 +6,10 @@ import { Button, Form, Input, InputNumber, Radio } from "antd";
 import { useUserContext } from "../../context/UserContext";
 import { useProductContext } from "../../context/ProductsContext";
 import { uploadImage } from "../../utils";
+import TextArea from "antd/es/input/TextArea";
 
 const plainOptions = ["public", "private"];
+const plainOption = ["Easy", "Moderate", "Challenging"];
 
 export const CreateProductModal = (props) => {
   const [img, setImg] = useState();
@@ -56,7 +58,7 @@ export const CreateProductModal = (props) => {
       <Modal handleClose={handleClose} open={open}>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <h3>Create Product</h3>
+            <h3>Share your Experience</h3>
           </div>
 
           <Form
@@ -74,7 +76,7 @@ export const CreateProductModal = (props) => {
             autoComplete="off"
           >
             <Form.Item
-              label="name"
+              label="Trail Name"
               name="name"
               rules={[
                 { required: true, message: "Required" },
@@ -84,7 +86,7 @@ export const CreateProductModal = (props) => {
               <Input />
             </Form.Item>
             <Form.Item
-              label="price"
+              label="Trail Length"
               name="price"
               rules={[{ min: 1, required: true, type: "number" }]}
             >
@@ -95,18 +97,24 @@ export const CreateProductModal = (props) => {
               />
             </Form.Item>
             <Form.Item
-              label="description"
+              label="Tell us your Experience"
               name="description"
               rules={[{ required: true, message: "Required" }]}
             >
-              <Input />
+              <TextArea />
             </Form.Item>
             <Form.Item
-              label="Category"
+              label="Difficulty"
               name="category"
               rules={[{ required: true, message: "Required" }]}
             >
-              <Input />
+              <Radio.Group
+                options={plainOption}
+                onChange={onChangeType}
+                value={type}
+                optionType="button"
+                buttonStyle="solid"
+              />
             </Form.Item>
             <Form.Item
               label="Type"

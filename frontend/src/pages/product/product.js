@@ -5,13 +5,14 @@ import { EditProductModal } from "./EditProductModal";
 import "./product.css";
 import { DeleteProductModal } from "./DeleteProductModal";
 import { useProductContext } from "../../context/ProductsContext";
-import { Button, Flex } from "antd";
+import { Button, Flex, Image } from "antd";
 import axios from "axios";
 import { useUserContext } from "../../context/UserContext";
 import {
   DeleteProductComment,
   UpdateProductComment,
 } from "../../components/Modal";
+import { Footer } from "../../components/footer";
 
 export const SingleProduct = () => {
   const { id } = useParams();
@@ -92,9 +93,16 @@ export const SingleProduct = () => {
         </div>
         {selectedProduct && (
           <div className="single-product-content">
-            <div style={{ width: "40%" }}>
+            <div
+              style={{
+                width: "40%",
+                display: "flex",
+                flexDirection: "row",
+                gap: "80px",
+              }}
+            >
               <h1>Name : {selectedProduct.name}</h1>
-              <img
+              <Image
                 style={{
                   height: "250px",
                   width: "300px",
@@ -103,9 +111,17 @@ export const SingleProduct = () => {
                 src={selectedProduct.image}
                 alt={"productImage"}
               />
-              <h3>Description : {selectedProduct.description}</h3>
-              <h3>Price : {selectedProduct.price}</h3>
-              <h3>Category : {selectedProduct.category}</h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "30px",
+                }}
+              >
+                <h3>Description : {selectedProduct.description}</h3>
+                <h3>Price : {selectedProduct.price}</h3>
+                <h3>Category : {selectedProduct.category}</h3>
+              </div>
             </div>
           </div>
         )}
@@ -192,6 +208,7 @@ export const SingleProduct = () => {
             </form>
           </div>
         </div>
+        <Footer />
         <EditProductModal
           handleClose={handleClose}
           open={open}
