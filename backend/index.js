@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "https://fullstackadventure-nkx7k5vs6-tushigs-projects.vercel.app",
-      // "http://localhost:3000",
+      "http://localhost:3000",
     ],
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
