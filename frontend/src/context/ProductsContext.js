@@ -10,11 +10,15 @@ export const ProductContextProvider = ({ children }) => {
     if (!userContextLoading) {
       const fetchProducts = async () => {
         try {
-          const response = await axios.get("http://localhost:8080/products", {
-            headers: {
-              Authorization: `Bearer ${currentUser.token}`,
-            },
-          });
+          const response = await axios.get(
+            "https://fullstackadventure-backend.onrender.com/products",
+            // "http://localhost:8080/products",
+            {
+              headers: {
+                Authorization: `Bearer ${currentUser.token}`,
+              },
+            }
+          );
           const data = await response.data;
           setProducts(data);
           setProductContextLoading(false);

@@ -29,7 +29,8 @@ export const UpdateProductComment = ({
     try {
       setModalLoading(true);
       const response = await axios.put(
-        `http://localhost:8080 /:productId/comments/:commentId`,
+        // `http://localhost:8080 /:productId/comments/:commentId`,
+        `https://fullstackadventure-backend.onrender.com /:productId/comments/:commentId`,
 
         {
           comment: updatedComment,

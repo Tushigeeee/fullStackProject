@@ -24,12 +24,16 @@ export const SignUp = () => {
   const onFinish = async () => {
     try {
       const imageUrl = await uploadImage(img);
-      const response = await axios.post(`http://localhost:8080/users/sign-up`, {
-        name: userName,
-        email,
-        password,
-        userImage: imageUrl,
-      });
+      const response = await axios.post(
+        `https://fullstackadventure-backend.onrender.com/users/sign-up`,
+        // `http://localhost:8080/users/sign-up`,
+        {
+          name: userName,
+          email,
+          password,
+          userImage: imageUrl,
+        }
+      );
 
       const data = response.data;
       localStorage.setItem("user", JSON.stringify(data));

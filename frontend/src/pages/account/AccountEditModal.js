@@ -57,7 +57,8 @@ export const AccountEditModel = ({ handleClose, open }) => {
     console.log(updatedAccount);
     try {
       const response = await axios.put(
-        `http://localhost:8080/account/changeProfile`,
+        `https://fullstackadventure-backend.onrender.com/account/changeProfile`,
+        // `http://localhost:8080/account/changeProfile`,
         updatedAccount,
         {
           headers: {

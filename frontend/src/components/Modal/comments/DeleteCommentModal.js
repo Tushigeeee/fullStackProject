@@ -26,7 +26,8 @@ export const DeleteProductComment = ({
     try {
       setModalLoading(true);
       const response = await axios.delete(
-        `http://localhost:8080/products/${productId}/comments/${commentId}}`,
+        // `http://localhost:8080/products/${productId}/comments/${commentId}}`,
+        `https://fullstackadventure-backend.onrender.com/products/${productId}/comments/${commentId}}`,
         {
           headers: {
             "Content-Type": "application/json",

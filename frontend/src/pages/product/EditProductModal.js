@@ -74,7 +74,8 @@ export const EditProductModal = (props) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/products/${id}`,
+        `https://fullstackadventure-backend.onrender.com/products/${id}`,
+        // `http://localhost:8080/products/${id}`,
         updatedProduct,
         {
           headers: {

@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "https://fullstack-frontend-eight.vercel.app",
-      "http://localhost:3000",
+      "https://fullstackadventure-nkx7k5vs6-tushigs-projects.vercel.app",
+      // "http://localhost:3000",
     ],
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",

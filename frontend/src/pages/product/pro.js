@@ -48,7 +48,8 @@ export const SingleProduct = () => {
       alert("Please enter a comment");
     } else {
       const response = await axios.post(
-        `http://localhost:8080/products/${id}/comments`,
+        `https://fullstackadventure-backend.onrender.com/products/${id}/comments`,
+        // `http://localhost:8080/products/${id}/comments`,
         {
           comment,
         },
