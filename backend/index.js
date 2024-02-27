@@ -6,6 +6,8 @@ const productsRoutes = require("./src/routes/products");
 const accountsRoutes = require("./src/routes/accounts");
 const commentsRoutes = require("./src/routes/comment");
 
+const cors = require("cors");
+
 //Express app
 const app = express();
 app.use(express.json());
@@ -14,7 +16,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://fullstackadventure.vercel.app", "http://localhost:3000"],
+    origin: ["https://fullstackadventure.vercel.app/", "http://localhost:3000"],
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     optionsSuccessStatus: 204,
