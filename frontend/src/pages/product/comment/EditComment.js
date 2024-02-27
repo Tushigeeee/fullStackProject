@@ -15,6 +15,7 @@ export const EditComment = (props) => {
     setCommentObject(comment);
     handleOpenUpdateCommentModal();
   };
+  console.log(comment);
 
   return (
     <div

@@ -11,13 +11,13 @@ const getAllProducts = async (req, res) => {
       options: { sort: { createdAt: "desc" } },
       populate: {
         path: "user",
-        select: ["email", "profilePicUrl", "name"],
+        select: ["email", "userImage", "name"],
       },
     })
 
     .populate({
       path: "user",
-      select: ["email", "profilePicUrl", "name"],
+      select: ["email", "userImage", "name"],
     })
     .sort(sort);
 

@@ -30,11 +30,11 @@ const updateComment = async (req, res) => {
       .findById(productId)
       .populate({
         path: "comments",
-        populate: { path: "user", select: "email" },
+        populate: { path: "user", select: ["email", "name", "userImage"] },
       })
       .populate({
         path: "user",
-        select: "email",
+        select: ["email", "name", "userImage"],
       });
 
     res.status(200).json(product);

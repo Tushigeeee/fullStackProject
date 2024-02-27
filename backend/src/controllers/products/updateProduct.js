@@ -14,11 +14,11 @@ const updateProduct = async (req, res) => {
     .populate({
       path: "comments",
       options: { sort: { createdAt: "desc" } },
-      populate: { path: "user", select: ["email", "profilePicUrl", "name"] },
+      populate: { path: "user", select: ["email", "userImage", "name"] },
     })
     .populate({
       path: "user",
-      select: ["email", "profilePicUrl", "name"],
+      select: ["email", "userImage", "name"],
     });
   if (!updatedProduct) {
     res.status(404).json({ message: "Product not found" });

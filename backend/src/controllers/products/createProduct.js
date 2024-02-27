@@ -11,7 +11,7 @@ const createProduct = async (req, res) => {
   }
 
   try {
-    const product = await Product.create({
+    const createProduct = await Product.create({
       name,
       price,
       description,
@@ -21,6 +21,21 @@ const createProduct = async (req, res) => {
       userEmail,
       image,
     });
+    const product = await Product.findById(createdProduct._id)
+      .populate({
+        path: "comments",
+        options: { sort: { createdAt: "desc" } },
+        populate: { path: "user", select: ["email", "userImage", "name"] },
+      })
+
+      .populate({
+        path: "user",
+        select: ["email", "userImage", "name"],
+      });
+
+    const user = await user.findById(userId);
+    user.products.push(createProduct._id);
+    await user.save();
     res.status(201).json(product);
   } catch (err) {
     return res.status(500).json({

@@ -11,7 +11,7 @@ import TextArea from "antd/es/input/TextArea";
 import { useNotificationContext } from "../../../context/NotificationContext";
 import { EditComment } from "./EditComment";
 
-export const Comment = (props) => {
+export const Comment = () => {
   const { id } = useParams();
 
   const { products, Update_Product } = useProductContext();
@@ -32,6 +32,7 @@ export const Comment = (props) => {
         `https://fullstackadventure-backend.onrender.com/products/${id}/comments`,
         // `http://localhost:8080/products/${id}/comments`,
         { comment: values.comment },
+
         {
           headers: {
             Authorization: `Bearer ${currentUser.token}`,
@@ -129,7 +130,7 @@ export const Comment = (props) => {
             }}
           >
             <Flex vertical="true" justify={"start"} align={"center"}>
-              <Avatar size="large" src={comment.user.profilePicUrl} />
+              <Avatar size="large" src={comment.userImage} />
               <span>{comment.user.name}</span>
             </Flex>
             <Flex

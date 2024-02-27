@@ -11,7 +11,7 @@ const getAllComments = async (req, res) => {
   try {
     const comments = await Comment.find({ productId }).populate({
       path: "user",
-      select: "email",
+      select: ["email", "name", "userImage"],
     });
 
     if (!comments.length) {

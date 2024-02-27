@@ -40,7 +40,7 @@ const createComment = async (req, res) => {
       })
       .populate({
         path: "user",
-        select: "email",
+        select: ["email", "name", "userImage"],
       });
 
     return res.status(201).json(updatedProduct);
